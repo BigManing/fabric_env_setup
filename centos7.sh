@@ -1,11 +1,17 @@
 #!/usr/bin/env bash
-echo -----1---->pip 的安装
+
+echo 新建一个fabric-env目录，并在这个目录下工作
+cd
+mkdir fabric-env
+cd fabric-env
+
+echo -----1----pip 的安装
 echo ---------
 sudo yum -y install epel-release
 sudo yum  -y  install python-pip
 sudo pip  -y  install --upgrade pip
 
-echo ----2----->docker的安装
+echo ----2-----docker的安装
 echo ---------
 echo 清除以前的
 sudo yum  -y  remove docker  docker-common docker-selinux docker-engine
@@ -22,16 +28,29 @@ sudo usermod -aG docker $USER
 sudo service docker restart
 sudo systemctl restart docker
 
-echo ----3----->docker-compose 的安装
+echo ----3-----docker-compose 的安装
 echo ---------
 sudo pip   install docker-compose
 docker-compose -version
 
-echo ----4----->node js 的安装
+echo ----4-----node js 的安装
 echo ---------
-#wget https://npm.taobao.org/mirrors/node/v9.9.0/node-v9.9.0.tar.gz
+# wget https://npm.taobao.org/mirrors/node/v9.9.0/node-v9.9.0.tar.gz
 echo  解压后 设置环境变量
 
-echo ----5----->go 的安装
+echo ----5-----go 的安装
 echo ---------
-echo  后续完善
+
+echo 下载go文件 
+wget https://dl.google.com/go/go1.11.1.linux-amd64.tar.gz
+tar -zxvf go1.11.1.linux-amd64.tar.gz
+
+echo 创建gopath目录
+mkdir -p  ~/gopath
+
+echo 设置环境变量
+echo "# go env" >> ~/.bashrc
+echo 'export GOROOT="$HOME/rs/go"' >> ~/.bashrc
+echo 'export GOPATH="$HOME/gopath"' >> ~/.bashrc
+echo 'export PATH="$GOROOT/bin:$GOPATH/bin:$PATH"' >> ~/.bashrc
+source ~/.bashrc
