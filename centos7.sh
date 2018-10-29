@@ -26,7 +26,6 @@ echo 添加用户组  重启
 sudo groupadd docker
 sudo usermod -aG docker $USER
 sudo service docker restart
-sudo systemctl restart docker
 
 echo ----3-----docker-compose 的安装
 echo ---------
@@ -35,19 +34,22 @@ docker-compose -version
 
 echo ----4-----node js 的安装
 echo ---------
-# wget https://npm.taobao.org/mirrors/node/v9.9.0/node-v9.9.0.tar.gz
+# 国内地址地址
+wget https://npm.taobao.org/mirrors/node/latest-v8.x/node-v8.9.1.tar.gz
+# 官方地址
+wget  https://nodejs.org/download/release/v8.9.1/node-v8.9.1-linux-x64.tar.gz
 echo  解压后 设置环境变量
 
 echo ----5-----go 的安装
 echo ---------
-
 echo 下载go文件 
-wget https://dl.google.com/go/go1.11.1.linux-amd64.tar.gz
-tar -zxvf go1.11.1.linux-amd64.tar.gz
-
+# 国内地址
+wget https://studygolang.com/dl/golang/go1.9.7.linux-amd64.tar.gz
+# 官方地址 
+# wget https://dl.google.com/go/go1.11.1.linux-amd64.tar.gz
+tar -zxvf go1.9.7.linux-amd64.tar.gz
 echo 创建gopath目录
 mkdir -p  ~/gopath
-
 echo 设置环境变量
 echo "# go env" >> ~/.bashrc
 echo 'export GOROOT="$HOME/rs/go"' >> ~/.bashrc

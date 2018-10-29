@@ -1,16 +1,16 @@
 # fabric_env_setup
 使用脚本快速设置Fabric的基础环境
 
-后续逐渐完善
+后续逐渐完善，欢迎各位的参与
 
 
  centos7环境下：
 
    - pip    √ 
    - docker  √
-   - docker-compose
-   - node js
-   - go 
+   - docker-compose √
+   - node js   √
+   - go  √
    
    
 ## 使用方式
