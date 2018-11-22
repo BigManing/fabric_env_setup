@@ -42,12 +42,22 @@ installDocker(){
     sudo usermod -aG docker $USER
     sudo service docker restart
 }
-installDockerCompose(){
+
+installDockerComposeUesPip(){
     printOperation "installDockerCompose"
 
     sudo pip   install docker-compose
     docker-compose -version
 }
+
+installDockerComposeUseOffical(){
+    printOperation "installDockerCompose"
+
+    sudo curl -L "https://github.com/docker/compose/releases/download/1.13.0/docker-compose-$(uname -s)-$(uname -m)" \
+        -o /usr/bin/docker-compose
+    sudo chmod +x /usr/bin/docker-compose
+}
+
 installNodejs(){
     printOperation "installNodejs"
     # 国内地址
@@ -82,7 +92,8 @@ echo "---------------------开始安装基础环境----------------------------"
 installGit
 installPip
 installDocker
-installDockerCompose
+# installDockerComposeUesPip
+installDockerComposeUseOffical
 installGo
 installNodejs
 
