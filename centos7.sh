@@ -106,3 +106,10 @@ git clone https://github.com/hyperledger/fabric.git
 git checkout release-1.1
 
 echo "---------------------all  done   验证版本 ----------------------------"
+git --version
+python -V
+docker --version
+docker-compose --version
+node --version
+npm --version      
+go version
