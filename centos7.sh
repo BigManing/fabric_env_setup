@@ -87,8 +87,18 @@ installGo(){
     echo "export PATH=$GOROOT/bin:$GOPATH/bin:$PATH" >> ~/.bash_profile
     source ~/.bash_profle
 }
- 
-echo "---------------------开始安装基础环境----------------------------"
+
+downloadFaricSource(){
+    mkdir -p $GOPATH/src/github.com/hyperleder
+    cd  $GOPATH/src/github.com/hyperleder
+    git clone https://github.com/hyperledger/fabric.git
+    git checkout release-1.1
+} 
+
+#-------------------------执行操作---------------------------------------
+
+printOperation "1 开始安装基础环境"
+
 installGit
 installPip
 installDocker
@@ -98,14 +108,12 @@ installGo
 installNodejs
 
 
-echo "---------------------下载fabric源码 并切换到1.1版本----------------------------"
+printOperation "2 下载fabric源码 并切换到1.1版本"
 
-mkdir -p $GOPATH/src/hyperleder
-cd  $GOPATH/src/hyperleder
-git clone https://github.com/hyperledger/fabric.git
-git checkout release-1.1
+downloadFaricSource
 
-echo "---------------------all  done   验证版本 ----------------------------"
+printOperation "3 all  done   验证版本"
+
 git --version
 python -V
 docker --version
