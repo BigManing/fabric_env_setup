@@ -51,15 +51,14 @@ installDockerCompose(){
 installNodejs(){
     printOperation "installNodejs"
     # 国内地址
-    wget https://npm.taobao.org/mirrors/node/latest-v8.x/node-v8.9.1.tar.gz
+    wget https://npm.taobao.org/mirrors/node/latest-v8.x/node-v8.9.1-linux-x64.tar.gz
     # 官方地址
     # wget  https://nodejs.org/download/release/v8.9.1/node-v8.9.1-linux-x64.tar.gz
-    tar -zxvf node-v8.9.1.tar.gz
+    tar -zxf node-v8.9.1-linux-x64.tar.gz 
 
     echo "# node env" >> ~/.bash_profile
-    echo "export PATH=$HOME/node-v8.9.1/bin:$PATH" >> ~/.bash_profile
+    echo "export PATH=$HOME/fabric-env/node-v8.9.1-linux-x64/bin:$PATH" >> ~/.bash_profile
     source ~/.bash_profile
-
 }
 installGo(){
     printOperation "installGo"
