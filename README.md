@@ -1,11 +1,12 @@
 # fabric_env_setup
-使用脚本快速设置Fabric的基础环境
+使用脚本快速配置Fabric的基础环境
 
 后续逐渐完善，欢迎各位的参与
 
 
  centos7环境下：
 
+   - git    √ 
    - pip    √ 
    - docker  √
    - docker-compose √
