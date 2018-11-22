@@ -27,9 +27,12 @@ installPip(){
 installDocker(){
     printOperation "installDocker"
     sudo yum  -y  remove docker  docker-common docker-selinux docker-engine
-    sudo yum  -y  install -y yum-utils device-mapper-persistent-data lvm2
-    sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-    yum list docker-ce --showduplicates | sort -r
+    # Set up repository
+    sudo yum install -y yum-utils device-mapper-persistent-data lvm2
+    # Use Aliyun Docker
+    sudo yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+    # show version list
+    # yum list docker-ce --showduplicates | sort -r
     sudo  yum  -y  install docker-ce
     echo  "change download source url ,you can skip this if you can touch offical address"
     curl -sSL https://get.daocloud.io/daotools/set_mirror.sh | sh -s http://91c0cc1e.m.daocloud.io
@@ -53,9 +56,9 @@ installNodejs(){
     # wget  https://nodejs.org/download/release/v8.9.1/node-v8.9.1-linux-x64.tar.gz
     tar -zxvf node-v8.9.1.tar.gz
 
-    echo "# node env" >> ~/.bashrc
-    echo "export PATH=$HOME/node-v8.9.1/bin:$PATH" >> ~/.bashrc
-    source ~/.bashrc
+    echo "# node env" >> ~/.bash_profile
+    echo "export PATH=$HOME/node-v8.9.1/bin:$PATH" >> ~/.bash_profile
+    source ~/.bash_profile
 
 }
 installGo(){
@@ -67,13 +70,13 @@ installGo(){
     # wget https://dl.google.com/go/go1.11.1.linux-amd64.tar.gz
     tar -zxvf go1.9.7.linux-amd64.tar.gz
     echo "创建gopath目录"
-    mkdir -p  ~/gopath
+    mkdir -p  $HOME/gopath
 
-    echo "# go env" >> ~/.bashrc
-    echo "export GOROOT=$HOME/fabric-env/go" >> ~/.bashrc
-    echo "export GOPATH=$HOME/gopath" >> ~/.bashrc
-    echo "export PATH=$GOROOT/bin:$GOPATH/bin:$PATH" >> ~/.bashrc
-    source ~/.bashrc
+    echo "# go env" >> ~/.bash_profile
+    echo "export GOROOT=$HOME/fabric-env/go" >> ~/.bash_profile
+    echo "export GOPATH=$HOME/gopath" >> ~/.bash_profile
+    echo "export PATH=$GOROOT/bin:$GOPATH/bin:$PATH" >> ~/.bash_profile
+    source ~/.bash_profle
 }
  
 echo "---------------------开始安装基础环境----------------------------"
@@ -92,4 +95,4 @@ cd  $GOPATH/src/hyperleder
 git clone https://github.com/hyperledger/fabric.git
 git checkout release-1.1
 
-echo "---------------------all  done ----------------------------"
+echo "---------------------all  done   验证版本 ----------------------------"
