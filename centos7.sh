@@ -41,6 +41,9 @@ installDocker(){
     sudo groupadd docker
     sudo usermod -aG docker $USER
     sudo service docker restart
+    # auto restart when reboot
+    sudo systemctl start docker
+    sudo systemctl enable docker
 }
 
 installDockerComposeUesPip(){
