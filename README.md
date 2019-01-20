@@ -25,3 +25,4 @@ curl  https://raw.githubusercontent.com/BigManing/fabric_env_setup/master/centos
 ```
 ## 特殊说明
 执行完成后 需要退出去再进来  这样才能使用`docker ps` 
+

@@ -45,7 +45,21 @@ installDocker(){
     sudo systemctl start docker
     sudo systemctl enable docker
 }
+installDocker2(){
+    sudo yum -y remove docker docker-common container-selinux
+    sudo yum -y remove docker-selinux
 
+    sudo yum-config-manager --add-repo https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+
+    yum update
+
+    yum install docker-engine
+
+    systemctl enable docker
+
+    systemctl restart docker
+
+}
 installDockerComposeUesPip(){
     printOperation "installDockerCompose"
 
